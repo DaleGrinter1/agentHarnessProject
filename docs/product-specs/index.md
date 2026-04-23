@@ -1,13 +1,15 @@
-# Product
+# Product Specs
 
-Use this document to describe what the project is for before implementation
-details harden around the wrong assumptions.
+This directory is the canonical home for product intent and user-facing
+requirements.
 
-## Status
+## Current State
 
-Product direction is not defined yet. Until this is replaced with real content,
-agents should treat the repo as a generic software starter and avoid making
-irreversible product decisions.
+The repository is still a generic harness starter. Product direction is not
+defined yet.
+
+Until real product specs exist, agents should treat the repo as a harness and
+avoid irreversible product decisions.
 
 ## To Define
 
@@ -43,3 +45,5 @@ Until this document is filled in:
 - do not invent product requirements
 - prefer infrastructure and documentation improvements over feature work
 - ask for clarification before building user-facing behavior
+- add future product specs as additional files in this directory and link them
+  from this index

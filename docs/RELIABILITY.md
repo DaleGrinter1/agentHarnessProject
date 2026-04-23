@@ -9,6 +9,7 @@ below are intentionally conservative until the project has real requirements.
 - bug fixes should include a regression test when practical
 - failures should be explicit and easy to diagnose
 - validation should be run before claiming work is complete
+- plan/state migrations should be mechanically checked before handoff
 
 ## To Define
 
@@ -41,3 +42,4 @@ Until concrete standards are added:
 - prefer deterministic behavior over clever retries
 - fail with clear messages rather than swallowing errors
 - do not claim validation passed unless commands were actually run
+- keep execution-plan state truthful enough for a fresh session to resume

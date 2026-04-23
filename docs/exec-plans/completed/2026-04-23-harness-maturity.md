@@ -18,9 +18,9 @@ locking the repo into a framework-specific setup.
 
 ## Relevant Context
 
-- Related docs: `AGENTS.md`, `README.md`, `docs/ARCHITECTURE.md`,
+- Related docs: `AGENTS.md`, `README.md`, `ARCHITECTURE.md`,
   `docs/RELIABILITY.md`, `docs/SECURITY.md`
-- Relevant files: `src/`, `tests/`, `docs/exec-plans/TEMPLATE.md`
+- Relevant files: `src/`, `tests/`, `docs/exec-plans/PLAN_TEMPLATE.md`
 - Constraints: keep changes small and reversible, keep `AGENTS.md` short, avoid
   unnecessary dependencies
 

@@ -7,8 +7,9 @@ having to reorganize the repo first.
 ## What This Repo Includes
 
 - `AGENTS.md`: working agreement for agents operating in this repo
-- `docs/`: source-of-truth documents that define goals, architecture,
-  reliability, security, harness workflow, and execution plans
+- `ARCHITECTURE.md`: top-level repo structure and implementation boundaries
+- `docs/`: source-of-truth documents for product specs, design, planning,
+  reliability, security, references, and generated artifacts
 - `scripts/`: lightweight automation that stays dependency-free unless a real
   project need appears
 - `src/`: application code
@@ -18,11 +19,11 @@ having to reorganize the repo first.
 
 1. `AGENTS.md`
 2. `README.md`
-3. `docs/PRODUCT.md`
-4. `docs/ARCHITECTURE.md`
-5. `docs/RELIABILITY.md`
-6. `docs/SECURITY.md`
-7. `docs/HARNESS.md`
+3. `ARCHITECTURE.md`
+4. the product specs index in `docs/product-specs`
+5. `docs/PLANS.md`
+6. `docs/RELIABILITY.md`
+7. `docs/SECURITY.md`
 
 ## Current State
 
@@ -35,9 +36,10 @@ written to be:
 
 ## How To Customize It
 
-1. Replace the placeholder sections in `docs/PRODUCT.md` with real goals,
+1. Replace the placeholder sections in the product specs index under
+   `docs/product-specs` with real goals,
    users, and non-goals.
-2. Update `docs/ARCHITECTURE.md` once you know the language, modules, and data
+2. Update `ARCHITECTURE.md` once you know the language, modules, and data
    flow.
 3. Fill in `docs/RELIABILITY.md` with the actual test, performance, and failure
    expectations.
@@ -58,10 +60,11 @@ Before a product exists, this repo should help with disciplined change-making
 more than application behavior.
 
 1. Read `AGENTS.md`, this file, and the relevant docs in `docs/`.
-2. For non-trivial work, create an execution plan from
-   `docs/exec-plans/TEMPLATE.md`.
-3. Prefer doc, script, and structure improvements over speculative features.
-4. Run `scripts/validate-harness.sh` before concluding harness changes.
+2. For non-trivial work, create or update an active initiative under
+   `docs/exec-plans/active/` using `docs/exec-plans/PLAN_TEMPLATE.md`.
+3. Keep the durable narrative in one `PLAN_<initiative>.md`.
+4. Track implementation checklist and handoff state in JSON under `state/`.
+5. Run `./scripts/execplan/check.sh` before concluding harness changes.
 
 ## OpenAI Docs MCP
 
@@ -88,7 +91,8 @@ There is no language-specific toolchain configured yet.
 
 Current harness validation:
 
-- `scripts/validate-harness.sh`
+- `./scripts/execplan/check.sh`
+- `./scripts/validate-harness.sh`
 
 Before declaring product work complete in the future, define and document:
 

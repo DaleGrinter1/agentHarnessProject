@@ -1,0 +1,30 @@
+{
+  "initiative": "harness-knowledge-migration",
+  "plan": "PLAN_harness-knowledge-migration.md",
+  "features": [
+    {
+      "id": "scaffold-canonical-layout",
+      "title": "Scaffold canonical knowledge-system layout",
+      "description": "Create the required docs directories, indexes, and active execplan layout.",
+      "passes": true
+    },
+    {
+      "id": "migrate-canonical-docs",
+      "title": "Move and rewrite legacy canonical docs",
+      "description": "Relocate tracked docs to the requested canonical paths and update repo references.",
+      "passes": true
+    },
+    {
+      "id": "normalize-active-plan-state",
+      "title": "Normalize active execution tracking",
+      "description": "Represent the migration initiative as one markdown plan plus JSON checklist, session state, and progress log.",
+      "passes": true
+    },
+    {
+      "id": "enforce-validation",
+      "title": "Validate execplan JSON state and legacy-path deprecations",
+      "description": "Implement scripts that enforce the active initiative layout, required plan sections, and deprecated-path rejection.",
+      "passes": true
+    }
+  ]
+}

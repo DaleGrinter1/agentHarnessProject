@@ -45,3 +45,4 @@ Until this document is customized:
 - choose the safest reasonable path
 - prefer additive changes over destructive ones
 - pause before editing code that touches credentials, auth, or deployment
+- preserve history with `git mv` when relocating tracked files

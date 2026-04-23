@@ -21,10 +21,10 @@ server and document the matching Codex CLI setup.
 - Related docs:
   - `AGENTS.md`
   - `README.md`
-  - `docs/HARNESS.md`
+  - `docs/design-docs/core-beliefs.md`
 - Relevant files:
   - `.vscode/mcp.json`
-  - `docs/exec-plans/2026-04-23-openai-docs-mcp.md`
+  - `docs/exec-plans/completed/2026-04-23-openai-docs-mcp.md`
 - Constraints:
   - Keep the change additive and repo-local where possible.
   - Do not commit secrets or credentials.
