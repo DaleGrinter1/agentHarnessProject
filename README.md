@@ -63,6 +63,25 @@ more than application behavior.
 3. Prefer doc, script, and structure improvements over speculative features.
 4. Run `scripts/validate-harness.sh` before concluding harness changes.
 
+## OpenAI Docs MCP
+
+This repo includes a VS Code MCP configuration at `.vscode/mcp.json` for the
+OpenAI developer documentation server:
+
+- Server name: `openaiDeveloperDocs`
+- Server URL: `https://developers.openai.com/mcp`
+
+For Codex CLI and the Codex IDE extension, the official setup is shared at the
+user level rather than stored in the repo. Configure it once with:
+
+```sh
+codex mcp add openaiDeveloperDocs --url https://developers.openai.com/mcp
+codex mcp list
+```
+
+`AGENTS.md` already instructs agents to use this MCP server for OpenAI-related
+work.
+
 ## Validation
 
 There is no language-specific toolchain configured yet.
