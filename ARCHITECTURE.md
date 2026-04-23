@@ -19,6 +19,7 @@ Repository knowledge lives in checked-in documents, not in chat history.
 - `src/`: application code
 - `tests/`: automated tests
 - `scripts/`: repo automation and validation
+- `skills/`: repo-local reusable skill definitions for recurring agent workflows
 - `docs/product-specs`: canonical product intent
 - `docs/design-docs`: design beliefs and deeper design docs
 - `docs/exec-plans`: planning rules, active initiatives, completed history

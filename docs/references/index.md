@@ -13,7 +13,8 @@ primary source of truth.
 
 ## Current References
 
-- No checked-in reference files yet.
+- `modal-sandbox.md`: local quickstart for launching a reusable Modal sandbox
+  from this repo.
 
 ## Source Notes
 

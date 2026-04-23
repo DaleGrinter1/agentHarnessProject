@@ -1,0 +1,24 @@
+{
+  "initiative": "skill-scaffolding",
+  "plan": "PLAN_skill-scaffolding.md",
+  "features": [
+    {
+      "id": "create-skill-layout",
+      "title": "Create a tracked repo-local skills directory",
+      "description": "Introduce a versioned location for reusable workflow skills and document the chosen placement.",
+      "passes": true
+    },
+    {
+      "id": "add-three-skills",
+      "title": "Add three recurring-workflow skills",
+      "description": "Create execplan-maintainer, bugfix-with-regression-test, and doc-gardener skill definitions.",
+      "passes": true
+    },
+    {
+      "id": "route-and-validate",
+      "title": "Update routing docs and validate the repo",
+      "description": "Make the skills discoverable in canonical repo docs and confirm all checks still pass.",
+      "passes": true
+    }
+  ]
+}

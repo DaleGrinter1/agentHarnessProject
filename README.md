@@ -10,6 +10,7 @@ having to reorganize the repo first.
 - `ARCHITECTURE.md`: top-level repo structure and implementation boundaries
 - `docs/`: source-of-truth documents for product specs, design, planning,
   reliability, security, references, and generated artifacts
+- `skills/`: repo-local reusable agent workflows for recurring tasks
 - `scripts/`: lightweight automation that stays dependency-free unless a real
   project need appears
 - `src/`: application code

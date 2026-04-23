@@ -19,6 +19,7 @@ This file is the routing map. The repository itself is the system of record.
 - Planning rules: `docs/PLANS.md`
 - Active execution work: `docs/exec-plans/active`
 - Completed execution history: `docs/exec-plans/completed`
+- Reusable agent workflows: `skills`
 - Reliability rules: `docs/RELIABILITY.md`
 - Security rules: `docs/SECURITY.md`
 - Reference material: `docs/references`
@@ -33,6 +34,7 @@ This file is the routing map. The repository itself is the system of record.
 - Reliability, validation, or release risk: read `docs/RELIABILITY.md` and `docs/QUALITY_SCORE.md`
 - Security-sensitive work: read `docs/SECURITY.md` first
 - Non-trivial implementation or refactors: read `docs/PLANS.md` and work from an initiative in `docs/exec-plans/active/`
+- Repeated repo workflows: check `skills/` for reusable task guidance
 
 ## Planning Read Order
 
