@@ -1,16 +1,17 @@
 # AGENTS.md
 
 ## Purpose
-This repository is for building and maintaining a small AI-assisted software project.
-Agents should optimize for correctness, small changes, readability, and easy review.
+This repository is an AI-assisted development harness. Optimize for
+correctness, small changes, readability, and easy review.
 
-## How to work
+## Start Here
 - Read this file first.
 - Then read `README.md`.
-- Before major changes, read the relevant docs in `docs/`.
+- Read the relevant docs in `docs/` before non-trivial changes.
+- For non-trivial work, create an execution plan in `docs/exec-plans/`.
 - Prefer small, reversible edits.
 - Explain intended changes before making broad refactors.
-- Run tests and linting before concluding work.
+- Run available validation before concluding work.
 - Do not invent architecture; follow `docs/ARCHITECTURE.md`.
 - Do not add dependencies unless necessary and justified.
 - If uncertain, leave a short note in the plan and choose the safest path.
@@ -20,6 +21,7 @@ Agents should optimize for correctness, small changes, readability, and easy rev
 - Architecture: `docs/ARCHITECTURE.md`
 - Reliability expectations: `docs/RELIABILITY.md`
 - Security constraints: `docs/SECURITY.md`
+- Harness workflow: `docs/HARNESS.md`
 - Execution plans: `docs/exec-plans/`
 
 ## Coding standards
@@ -29,14 +31,9 @@ Agents should optimize for correctness, small changes, readability, and easy rev
 - Keep diffs reviewable.
 
 ## Validation
-- Run project tests before finishing.
+- Run project tests before finishing when they exist.
+- Run `scripts/validate-harness.sh` for harness-level checks.
 - If tests fail, summarize the cause clearly.
 - Never claim something works unless it was validated.
 
-## When asked to build something new
-1. Restate the goal briefly
-2. Inspect relevant files
-3. Propose a small implementation plan
-4. Implement incrementally
-5. Run validation
-6. Summarize what changed
+Always use the OpenAI developer documentation MCP server if you need to work with the OpenAI API, ChatGPT Apps SDK, Codex,… without me having to explicitly ask.
