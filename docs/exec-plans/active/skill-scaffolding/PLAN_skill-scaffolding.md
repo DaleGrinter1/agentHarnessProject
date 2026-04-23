@@ -9,9 +9,9 @@ This plan must be maintained in accordance with `docs/PLANS.md`.
 
 This change adds reusable repo-local skills so future agents can follow
 consistent workflows for plan maintenance, bugfixes with regression coverage,
-and doc hygiene. After this lands, an agent should be able to discover the
-skills directory, select the right workflow, and execute common harness tasks
-with less ambiguity.
+doc hygiene, and Modal sandbox operations. After this lands, an agent should be
+able to discover the skills directory, select the right workflow, and execute
+common harness tasks with less ambiguity.
 
 ## Surprises & Discoveries
 
@@ -27,18 +27,21 @@ with less ambiguity.
   Rationale: It keeps the skills visible and versioned in the repo without
   requiring a hidden directory that this environment would not let me create.
   Date/Author: 2026-04-23 / Codex
-- Decision: Start with three skills tied to repeated harness workflows.
+- Decision: Start with a small set of skills tied to repeated harness
+  workflows, then expand only when a new workflow proves worth standardizing.
   Rationale: These are high-frequency, easy-to-do-inconsistently tasks that
-  benefit from standardization.
+  benefit from standardization without turning the skills directory into a grab
+  bag.
   Date/Author: 2026-04-23 / Codex
 
 ## Outcomes & Retrospective
 
-Three repo-local skills were added:
+Four repo-local skills now exist:
 
 - `execplan-maintainer`
 - `bugfix-with-regression-test`
 - `doc-gardener`
+- `modal-sandbox-operator`
 
 The repo routing docs now mention the `skills/` directory so future contributors
 can discover and use these workflows intentionally.
@@ -57,7 +60,7 @@ tracked `skills/` directory holds one folder per workflow, each with a required
 
 ## Plan of Work
 
-Create a new active initiative for this skill scaffolding work. Then add three
+Create a new active initiative for this skill scaffolding work. Then add
 skill folders under `skills/`, each with concise trigger metadata and workflow
 instructions. Finally, update the repo routing docs so the new skills are
 discoverable and run the repo validation commands.
@@ -91,16 +94,18 @@ Document the JSON handoff files for this initiative:
 
 - [x] (2026-04-23T03:08:14Z) Created the active initiative layout and confirmed
   the repo had no existing tracked skills directory.
-- [x] (2026-04-23T03:15:00Z) Added the three repo-local skills and updated
+- [x] (2026-04-23T03:15:00Z) Added the initial repo-local skills and updated
   routing docs.
 - [x] (2026-04-23T03:16:00Z) Ran validation and finalized the initiative state.
+- [x] (2026-04-23T11:40:00Z) Realigned the active initiative narrative after
+  adding `modal-sandbox-operator` as a fourth skill.
 
 ## Testing Approach
 
 - run `python3 scripts/execplan/validate-state.mjs`
 - run `./scripts/execplan/check.sh`
 - run `./scripts/validate-harness.sh`
-- inspect the new `skills/` directory for the three expected skill folders
+- inspect the `skills/` directory for the expected skill folders
 
 ## Constraints & Considerations
 

@@ -10,8 +10,8 @@
     },
     {
       "id": "add-three-skills",
-      "title": "Add three recurring-workflow skills",
-      "description": "Create execplan-maintainer, bugfix-with-regression-test, and doc-gardener skill definitions.",
+      "title": "Add recurring-workflow skills",
+      "description": "Create repo-local skill definitions for repeated plan maintenance, bugfix, doc hygiene, and sandbox-operation workflows.",
       "passes": true
     },
     {
