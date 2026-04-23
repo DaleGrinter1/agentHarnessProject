@@ -18,7 +18,7 @@ Repository knowledge lives in checked-in documents, not in chat history.
 
 - `src/`: application code
 - `tests/`: automated tests
-- `scripts/`: repo automation and validation
+- `scripts/`: repo automation, validation, and sandbox harness entrypoints
 - `skills/`: repo-local reusable skill definitions for recurring agent workflows
 - `docs/product-specs`: canonical product intent
 - `docs/design-docs`: design beliefs and deeper design docs
@@ -36,6 +36,18 @@ Until a product-specific architecture is defined, follow these defaults:
 - keep side effects near the edges of the system
 - keep pure logic easy to test in isolation
 - mirror important `src/` behavior with tests in `tests/`
+
+## Current Harness Runtime
+
+The repo currently includes a reusable Modal sandbox workflow for running
+commands in an isolated remote container with the repository mounted into
+`/workspace`.
+
+- `scripts/modal_sandbox_demo.py` is the configurable Python entrypoint.
+- `scripts/run_modal_sandbox.sh` is the preferred wrapper for the common
+  repo-mounted case.
+- `.env` is the local place for Modal credentials and local defaults.
+- `docs/references/modal-sandbox.md` documents the current usage.
 
 ## To Define Later
 
@@ -72,3 +84,4 @@ Until this document is customized:
 - do not introduce framework-heavy structure without a clear need
 - avoid cross-cutting refactors that imply an architecture choice
 - keep repo knowledge aligned with the code and scripts that enforce it
+- treat the Modal sandbox helper as harness infrastructure, not product logic

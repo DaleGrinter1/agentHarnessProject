@@ -1,7 +1,8 @@
 # Project Starter
 
-This repository is a lightweight starter for an AI-assisted software project.
-It is intentionally generic so you can define the actual product later without
+This repository is a lightweight starter for an AI-assisted software project
+with a reusable Modal-based sandbox harness for remote command execution. It is
+still intentionally generic enough to define the actual product later without
 having to reorganize the repo first.
 
 ## What This Repo Includes
@@ -11,8 +12,7 @@ having to reorganize the repo first.
 - `docs/`: source-of-truth documents for product specs, design, planning,
   reliability, security, references, and generated artifacts
 - `skills/`: repo-local reusable agent workflows for recurring tasks
-- `scripts/`: lightweight automation that stays dependency-free unless a real
-  project need appears
+- `scripts/`: lightweight automation, validation, and sandbox harness entrypoints
 - `src/`: application code
 - `tests/`: automated tests
 
@@ -34,6 +34,15 @@ written to be:
 - safe for agents to follow before project details exist
 - easy for humans to replace with project-specific decisions later
 - explicit about what is still undecided
+
+The repo also includes a working Modal sandbox path for harness-style
+development:
+
+- `scripts/modal_sandbox_demo.py`: configurable Python entrypoint for launching
+  a Modal sandbox
+- `scripts/run_modal_sandbox.sh`: preferred wrapper for mounting the repo at
+  `/workspace` and running commands there
+- `docs/references/modal-sandbox.md`: quickstart and usage notes
 
 ## How To Customize It
 
@@ -67,6 +76,12 @@ more than application behavior.
 4. Track implementation checklist and handoff state in JSON under `state/`.
 5. Run `./scripts/execplan/check.sh` before concluding harness changes.
 
+For repo-mounted remote execution with the current harness:
+
+```sh
+scripts/run_modal_sandbox.sh "python -V && ls -la"
+```
+
 ## OpenAI Docs MCP
 
 This repo includes a VS Code MCP configuration at `.vscode/mcp.json` for the
@@ -88,12 +103,17 @@ work.
 
 ## Validation
 
-There is no language-specific toolchain configured yet.
+There is no product-specific application toolchain configured yet.
 
 Current harness validation:
 
 - `./scripts/execplan/check.sh`
 - `./scripts/validate-harness.sh`
+
+Current sandbox harness entrypoints:
+
+- `scripts/run_modal_sandbox.sh`
+- `python scripts/modal_sandbox_demo.py --help`
 
 Before declaring product work complete in the future, define and document:
 

@@ -33,6 +33,8 @@ This file is the routing map. The repository itself is the system of record.
 - UX, interaction, or visual direction: read `docs/DESIGN.md`, `docs/FRONTEND.md`, then `docs/design-docs/`
 - Reliability, validation, or release risk: read `docs/RELIABILITY.md` and `docs/QUALITY_SCORE.md`
 - Security-sensitive work: read `docs/SECURITY.md` first
+- Sandbox or harness-runtime work: read `docs/references/modal-sandbox.md` and
+  the relevant initiative under `docs/exec-plans/active/`
 - Non-trivial implementation or refactors: read `docs/PLANS.md` and work from an initiative in `docs/exec-plans/active/`
 - Repeated repo workflows: check `skills/` for reusable task guidance
 
