@@ -11,7 +11,7 @@
     {
       "id": "add-three-skills",
       "title": "Add recurring-workflow skills",
-      "description": "Create repo-local skill definitions for repeated plan maintenance, bugfix, doc hygiene, and sandbox-operation workflows.",
+      "description": "Create repo-local skill definitions for repeated plan maintenance, bugfix, doc hygiene, sandbox-operation, agent-scaffolding, contract-audit, orchestration, and observability workflows.",
       "passes": true
     },
     {

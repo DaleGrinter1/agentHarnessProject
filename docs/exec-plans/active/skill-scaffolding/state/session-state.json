@@ -5,12 +5,12 @@
   "blockers": [
     "A hidden repo-local .codex directory could not be created in this sandbox, so tracked skills live in the top-level skills directory instead."
   ],
-  "next_action": "Use these skills in future repo work and add more only when a repeated workflow proves worth standardizing, keeping the active initiative narrative aligned with the current skill inventory.",
+  "next_action": "Use these skills in future repo work and add more only when a repeated workflow proves worth standardizing, especially as sandboxed agent contracts and orchestration paths become concrete.",
   "handoff_rules": [
     "Read the plan before editing files.",
     "Keep skill metadata concise and trigger-oriented.",
     "Do not add auxiliary README files inside skill folders.",
     "Append meaningful checkpoints to progress.jsonl."
   ],
-  "updated_at": "2026-04-23T11:40:00Z"
+  "updated_at": "2026-04-23T11:55:00Z"
 }

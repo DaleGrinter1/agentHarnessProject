@@ -9,9 +9,10 @@ This plan must be maintained in accordance with `docs/PLANS.md`.
 
 This change adds reusable repo-local skills so future agents can follow
 consistent workflows for plan maintenance, bugfixes with regression coverage,
-doc hygiene, and Modal sandbox operations. After this lands, an agent should be
-able to discover the skills directory, select the right workflow, and execute
-common harness tasks with less ambiguity.
+doc hygiene, Modal sandbox operations, agent scaffolding, contract reviews,
+observability, and multi-agent orchestration. After this lands, an agent should
+be able to discover the skills directory, select the right workflow, and
+execute common harness tasks with less ambiguity.
 
 ## Surprises & Discoveries
 
@@ -33,18 +34,30 @@ common harness tasks with less ambiguity.
   benefit from standardization without turning the skills directory into a grab
   bag.
   Date/Author: 2026-04-23 / Codex
+- Decision: Add a second wave of agent-focused skills before product code
+  expands further.
+  Rationale: The project goal is to run multiple agents in separate sandboxes,
+  so codifying scaffolding, contract audits, orchestration, and observability
+  early will make later implementation work more consistent.
+  Date/Author: 2026-04-23 / Codex
 
 ## Outcomes & Retrospective
 
-Four repo-local skills now exist:
+Eight repo-local skills now exist:
 
 - `execplan-maintainer`
 - `bugfix-with-regression-test`
 - `doc-gardener`
 - `modal-sandbox-operator`
+- `sandbox-agent-scaffolder`
+- `sandbox-contract-auditor`
+- `multi-agent-orchestrator`
+- `agent-observability`
 
 The repo routing docs now mention the `skills/` directory so future contributors
-can discover and use these workflows intentionally.
+can discover and use these workflows intentionally. The skill inventory now
+covers both general harness maintenance and the first layer of agent-specific
+workflow guidance for a multi-sandbox system.
 
 The skills are intentionally small and workflow-specific. They are a good fit
 for this repo because they standardize repeated harness motions without adding a
@@ -99,6 +112,9 @@ Document the JSON handoff files for this initiative:
 - [x] (2026-04-23T03:16:00Z) Ran validation and finalized the initiative state.
 - [x] (2026-04-23T11:40:00Z) Realigned the active initiative narrative after
   adding `modal-sandbox-operator` as a fourth skill.
+- [x] (2026-04-23T11:55:00Z) Added four agent-focused skills for scaffolding,
+  contract review, orchestration, and observability, then refreshed the
+  initiative state.
 
 ## Testing Approach
 
