@@ -1,0 +1,24 @@
+{
+  "initiative": "modal-sandbox-hardening",
+  "plan": "PLAN_modal-sandbox-hardening.md",
+  "features": [
+    {
+      "id": "repo-aware-helper",
+      "title": "Add repo-aware Modal helper defaults",
+      "description": "Update the Python helper to support mounting the repo, stable app naming, and explicit resource flags.",
+      "passes": true
+    },
+    {
+      "id": "wrapper-script",
+      "title": "Add a one-command sandbox wrapper",
+      "description": "Introduce a shell wrapper that mounts the repository into /workspace and forwards extra Modal options.",
+      "passes": true
+    },
+    {
+      "id": "docs-and-validation",
+      "title": "Refresh docs and validate the workflow",
+      "description": "Document the new preferred commands, keep the exec-plan state aligned, and run the repo checks.",
+      "passes": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "initiative": "skill-scaffolding",
+  "plan": "PLAN_skill-scaffolding.md",
+  "features": [
+    {
+      "id": "create-skill-layout",
+      "title": "Create a tracked repo-local skills directory",
+      "description": "Introduce a versioned location for reusable workflow skills and document the chosen placement.",
+      "passes": true
+    },
+    {
+      "id": "add-three-skills",
+      "title": "Add recurring-workflow skills",
+      "description": "Create repo-local skill definitions for repeated plan maintenance, bugfix, doc hygiene, sandbox-operation, agent-scaffolding, contract-audit, orchestration, and observability workflows.",
+      "passes": true
+    },
+    {
+      "id": "route-and-validate",
+      "title": "Update routing docs and validate the repo",
+      "description": "Make the skills discoverable in canonical repo docs and confirm all checks still pass.",
+      "passes": true
+    }
+  ]
+}

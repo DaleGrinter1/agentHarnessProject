@@ -1,0 +1,27 @@
+.DS_Store
+.env
+.env.*
+*.local
+
+# Editor files
+.idea/
+.vscode/
+!.vscode/
+!.vscode/mcp.json
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+.venv-modal/
+venv/
+
+# Node
+node_modules/
+dist/
+coverage/

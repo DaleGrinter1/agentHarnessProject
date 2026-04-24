@@ -1,0 +1,14 @@
+{
+  "initiative": "modal-sandbox-hardening",
+  "plan": "PLAN_modal-sandbox-hardening.md",
+  "active_feature_id": null,
+  "blockers": [],
+  "next_action": "Use scripts/run_modal_sandbox.sh for repo-mounted Modal commands and extend only if repeated workflows justify more presets.",
+  "handoff_rules": [
+    "Read the plan before editing files.",
+    "Keep the wrapper focused on the repo-mounted happy path.",
+    "Do not add tracked secrets or machine-specific token data.",
+    "Append meaningful checkpoints to progress.jsonl."
+  ],
+  "updated_at": "2026-04-23T06:25:00Z"
+}

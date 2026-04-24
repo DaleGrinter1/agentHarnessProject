@@ -1,0 +1,16 @@
+{
+  "initiative": "harness-knowledge-migration",
+  "plan": "PLAN_harness-knowledge-migration.md",
+  "active_feature_id": null,
+  "blockers": [
+    "The requested external PLANS.md reference file was unavailable at the provided absolute path, so repo-local adaptation is being used."
+  ],
+  "next_action": "Archive this initiative into completed history when a future cleanup pass decides the active migration record is no longer needed.",
+  "handoff_rules": [
+    "Read the plan before editing files.",
+    "Treat feature-list.json as the canonical checklist.",
+    "Append new checkpoints to progress.jsonl instead of rewriting prior entries.",
+    "Do not create markdown task files or tasks/ directories."
+  ],
+  "updated_at": "2026-04-23T03:10:00Z"
+}
