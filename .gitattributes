@@ -1,0 +1,17 @@
+# Normalize line endings across macOS/Linux and Windows.
+# Store all text files as LF in the repository, while allowing
+# Windows-specific scripts (.bat/.cmd) to use CRLF when checked out.
+# This prevents inconsistent diffs and merge issues between environments.
+
+# Default
+* text=auto
+
+# Force LF (good for most code)
+*.js text eol=lf
+*.ts text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+
+# Windows-specific files
+*.bat text eol=crlf
+*.cmd text eol=crlf
