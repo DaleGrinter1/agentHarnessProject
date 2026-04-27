@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import Counter
+from datetime import UTC, datetime
 from shutil import get_terminal_size
 from typing import Any
 
@@ -22,8 +23,30 @@ def render_status(records: list[dict[str, Any]], color: bool = True) -> str:
         return "Agent Workers\n\nNo worker status records found."
 
     counts = Counter(str(record.get("status", "unknown")) for record in records)
+    active = [record for record in records if is_active(record)]
+    inactive = [record for record in records if not is_active(record)]
     summary = "  ".join(f"{status}:{count}" for status, count in sorted(counts.items()))
-    lines = ["Agent Workers", summary, ""]
+    lines = [
+        "Agent Workers",
+        f"active:{len(active)}  inactive:{len(inactive)}  {summary}",
+        "",
+    ]
+
+    lines.extend(render_table("Active Tasks", active, width, color))
+    lines.append("")
+    lines.extend(render_table("Recent Completed", inactive[:10], width, color))
+
+    return "\n".join(lines)
+
+
+def render_table(
+    title: str,
+    records: list[dict[str, Any]],
+    width: int,
+    color: bool,
+) -> list[str]:
+    if not records:
+        return [title, "  None"]
 
     columns = [
         ("status", 13),
@@ -36,6 +59,7 @@ def render_status(records: list[dict[str, Any]], color: bool = True) -> str:
     ]
     objective_width = max(16, width - sum(size for _, size in columns) - len(columns) * 3)
 
+    lines = [title]
     header = (
         f"{'status':13}  {'task':18}  {'worker':16}  {'resource':10}  "
         f"{'duration':9}  {'return':8}  {'sandbox':16}  {'objective':{objective_width}}"
@@ -57,14 +81,11 @@ def render_status(records: list[dict[str, Any]], color: bool = True) -> str:
             f"{clip(record.get('objective'), objective_width):{objective_width}}"
         )
 
-    lines.append("")
-    for record in records[:3]:
-        task_id = clip(record.get("task_id"), 24)
-        summary = str(record.get("summary") or "").strip()
-        if summary:
-            lines.append(f"{task_id}: {clip(summary, width - len(task_id) - 2)}")
+    return lines
 
-    return "\n".join(lines)
+
+def is_active(record: dict[str, Any]) -> bool:
+    return str(record.get("status") or "") == "running"
 
 
 def colorize(value: str, status: str, enabled: bool) -> str:
@@ -89,7 +110,22 @@ def clip(value: object, width: int) -> str:
 
 
 def format_duration(record: dict[str, Any]) -> str:
+    if is_active(record):
+        elapsed = elapsed_seconds(record.get("started_at"))
+        if elapsed is not None:
+            return f"{elapsed:.1f}s"
+
     duration = record.get("duration_s")
     if isinstance(duration, int | float):
         return f"{duration:.1f}s"
     return "-"
+
+
+def elapsed_seconds(started_at: object) -> float | None:
+    if not isinstance(started_at, str) or not started_at:
+        return None
+    try:
+        started = datetime.fromisoformat(started_at.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return max(0.0, (datetime.now(UTC) - started).total_seconds())

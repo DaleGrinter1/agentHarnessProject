@@ -199,6 +199,39 @@ class ModalWorkerTests(unittest.TestCase):
         self.assertIn("smoke", output)
         self.assertIn("prove worker", output)
 
+    def test_status_view_separates_active_and_completed_tasks(self) -> None:
+        output = render_status(
+            [
+                {
+                    "task_id": "active-task",
+                    "worker_name": "modal-worker",
+                    "objective": "still live",
+                    "status": "running",
+                    "resource_class": "cpu",
+                    "duration_s": 0,
+                    "returncode": None,
+                    "sandbox_id": None,
+                    "started_at": "2026-04-27T02:00:00Z",
+                },
+                {
+                    "task_id": "done-task",
+                    "worker_name": "modal-worker",
+                    "objective": "already done",
+                    "status": "succeeded",
+                    "resource_class": "cpu",
+                    "duration_s": 2.4,
+                    "returncode": 0,
+                    "sandbox_id": "sb-123",
+                },
+            ],
+            color=False,
+        )
+
+        self.assertIn("active:1", output)
+        self.assertIn("inactive:1", output)
+        self.assertLess(output.index("Active Tasks"), output.index("Recent Completed"))
+        self.assertLess(output.index("active-task"), output.index("done-task"))
+
 
 if __name__ == "__main__":
     unittest.main()

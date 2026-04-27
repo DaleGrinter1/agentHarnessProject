@@ -3,7 +3,7 @@
   "plan": "PLAN_agent-harness-scaling.md",
   "active_feature_id": "single-worker-smoke-path",
   "blockers": [],
-  "next_action": "Rerun the live Modal smoke test for scripts/run_agent_worker.py and confirm the result reports status succeeded with returncode 0.",
+  "next_action": "Rerun the live Modal smoke test with python scripts/agent_status.py --watch open in another terminal and confirm the Active Tasks section moves the worker to Recent Completed when it finishes.",
   "handoff_rules": [
     "Read AGENTS.md, ARCHITECTURE.md, docs/references/modal-openai-agents-sdk-blog.md, and this plan before editing runtime files.",
     "Keep the harness control plane separate from sandbox execution.",
@@ -11,5 +11,5 @@
     "Keep worker outputs summarized and machine-readable where practical.",
     "Append meaningful checkpoints to progress.jsonl."
   ],
-  "updated_at": "2026-04-27T02:57:51Z"
+  "updated_at": "2026-04-27T03:03:55Z"
 }

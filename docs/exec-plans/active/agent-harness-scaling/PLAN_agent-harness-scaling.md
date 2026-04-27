@@ -43,6 +43,11 @@ resource limits before any expensive parallel or GPU work is exposed.
   null`; Modal's reference exposes the completed exit code through
   `Sandbox.returncode` and `Sandbox.poll()`.
 
+- Observation: The terminal status view is most useful when it foregrounds
+  active work rather than presenting a flat latest-record table.
+  Evidence: `scripts/agent_status.py --no-color` now renders separate
+  `Active Tasks` and `Recent Completed` sections with active/inactive counts.
+
 ## Decision Log
 
 - Decision: Treat this as a new initiative rather than extending the completed
@@ -180,6 +185,8 @@ Document the JSON handoff files for this initiative:
 - [x] (2026-04-27T02:57:51Z) Fix Modal sandbox return-code compatibility so a
   successful live sandbox command is not misclassified as failed when
   `Sandbox.wait()` returns `None`.
+- [x] (2026-04-27T03:03:55Z) Update the terminal status view to show active
+  live workers separately from inactive completed workers.
 - [ ] (2026-04-27T00:55:00Z) Scaffold and validate a single sandboxed worker
   path.
 - [ ] (2026-04-27T00:55:00Z) Add quota-bound async worker-pool state.
