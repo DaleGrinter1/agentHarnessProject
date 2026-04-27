@@ -15,6 +15,8 @@ primary source of truth.
 
 - `modal-sandbox.md`: local quickstart for launching a reusable Modal sandbox
   from this repo.
+- `modal-openai-agents-sdk-blog.md`: applied notes from Modal's blog on
+  building an OpenAI Agents SDK harness on Modal Sandboxes.
 
 ## Source Notes
 

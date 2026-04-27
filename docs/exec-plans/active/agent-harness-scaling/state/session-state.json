@@ -1,0 +1,15 @@
+{
+  "initiative": "agent-harness-scaling",
+  "plan": "PLAN_agent-harness-scaling.md",
+  "active_feature_id": "orchestrator-worker-contract",
+  "blockers": [],
+  "next_action": "Define the orchestrator/worker contract before changing runtime code.",
+  "handoff_rules": [
+    "Read AGENTS.md, ARCHITECTURE.md, docs/references/modal-openai-agents-sdk-blog.md, and this plan before editing runtime files.",
+    "Keep the harness control plane separate from sandbox execution.",
+    "Do not expose GPU resources until quota and status reporting exist.",
+    "Keep worker outputs summarized and machine-readable where practical.",
+    "Append meaningful checkpoints to progress.jsonl."
+  ],
+  "updated_at": "2026-04-27T01:00:00Z"
+}

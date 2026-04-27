@@ -1,0 +1,36 @@
+{
+  "initiative": "agent-harness-scaling",
+  "plan": "PLAN_agent-harness-scaling.md",
+  "features": [
+    {
+      "id": "blog-learning-reference",
+      "title": "Capture Modal and OpenAI Agents SDK blog learnings",
+      "description": "Summarize the applicable blog guidance in repo references and link it from the references index.",
+      "passes": true
+    },
+    {
+      "id": "orchestrator-worker-contract",
+      "title": "Define orchestrator and worker contract",
+      "description": "Specify worker input, output, status, run metadata, failure states, and ownership boundaries.",
+      "passes": false
+    },
+    {
+      "id": "single-worker-smoke-path",
+      "title": "Scaffold a single sandboxed worker path",
+      "description": "Create the smallest observable worker workflow using the existing Modal sandbox execution path.",
+      "passes": false
+    },
+    {
+      "id": "quota-bound-worker-pool",
+      "title": "Add quota-bound async worker pool",
+      "description": "Track active workers, expose status, enforce concurrency and resource quotas, and support timeout/cancellation.",
+      "passes": false
+    },
+    {
+      "id": "snapshots-and-skills",
+      "title": "Add filesystem snapshot and skill hooks",
+      "description": "Allow prepared workspace snapshots and selected skill context once the worker pool is observable.",
+      "passes": false
+    }
+  ]
+}
