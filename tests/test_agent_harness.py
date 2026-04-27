@@ -23,9 +23,31 @@ from agent_harness.status_store import (
     running_record,
 )
 from agent_harness.status_view import render_status
+from scripts.modal_sandbox_demo import sandbox_returncode
 
 
 class ModalWorkerTests(unittest.TestCase):
+    def test_sandbox_returncode_uses_wait_result_when_available(self) -> None:
+        class Sandbox:
+            returncode = None
+
+        self.assertEqual(sandbox_returncode(Sandbox(), 0), 0)
+
+    def test_sandbox_returncode_falls_back_to_property(self) -> None:
+        class Sandbox:
+            returncode = 0
+
+        self.assertEqual(sandbox_returncode(Sandbox(), None), 0)
+
+    def test_sandbox_returncode_falls_back_to_poll(self) -> None:
+        class Sandbox:
+            returncode = None
+
+            def poll(self) -> int:
+                return 0
+
+        self.assertEqual(sandbox_returncode(Sandbox(), None), 0)
+
     def test_parse_modal_output_splits_metadata_and_streams(self) -> None:
         parsed = parse_modal_output(
             "\n".join(

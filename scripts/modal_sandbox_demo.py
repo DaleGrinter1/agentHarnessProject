@@ -22,8 +22,6 @@ import os
 import re
 from pathlib import Path
 
-import modal
-
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_ENV_FILE = REPO_ROOT / ".env"
@@ -149,7 +147,9 @@ def load_env_file(path: Path) -> None:
         os.environ.setdefault(key.strip(), cleaned)
 
 
-def build_image(args: argparse.Namespace) -> modal.Image:
+def build_image(args: argparse.Namespace):
+    import modal
+
     image = modal.Image.debian_slim(python_version=args.python_version)
 
     mount_dir = selected_mount_dir(args)
@@ -172,7 +172,26 @@ def read_stream(stream: object) -> str:
     return str(data)
 
 
+def sandbox_returncode(sandbox: object, wait_result: object) -> int | None:
+    if isinstance(wait_result, int):
+        return wait_result
+
+    returncode = getattr(sandbox, "returncode", None)
+    if isinstance(returncode, int):
+        return returncode
+
+    poll = getattr(sandbox, "poll", None)
+    if callable(poll):
+        polled = poll()
+        if isinstance(polled, int):
+            return polled
+
+    return None
+
+
 def main() -> None:
+    import modal
+
     args = parse_args()
     load_env_file(args.env_file.expanduser().resolve())
     env = parse_env(args.env)
@@ -198,7 +217,8 @@ def main() -> None:
     )
 
     try:
-        returncode = sandbox.wait()
+        wait_result = sandbox.wait()
+        returncode = sandbox_returncode(sandbox, wait_result)
         stdout = read_stream(sandbox.stdout)
         stderr = read_stream(sandbox.stderr)
     finally:

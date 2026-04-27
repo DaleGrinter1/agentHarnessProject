@@ -36,6 +36,13 @@ resource limits before any expensive parallel or GPU work is exposed.
   as a terminal dashboard, and `--watch` can follow worker status from another
   terminal.
 
+- Observation: Modal SDK versions can complete `Sandbox.wait()` without
+  returning the process exit code directly.
+  Evidence: A live worker smoke run produced sandbox id
+  `sb-VcJbcRalaRfh9Kun5TDEHk`, stdout `Python 3.12.10`, and `returncode:
+  null`; Modal's reference exposes the completed exit code through
+  `Sandbox.returncode` and `Sandbox.poll()`.
+
 ## Decision Log
 
 - Decision: Treat this as a new initiative rather than extending the completed
@@ -170,6 +177,9 @@ Document the JSON handoff files for this initiative:
   mocked runner validation.
 - [x] (2026-04-27T02:33:28Z) Add a dependency-free terminal status dashboard
   backed by JSONL worker records.
+- [x] (2026-04-27T02:57:51Z) Fix Modal sandbox return-code compatibility so a
+  successful live sandbox command is not misclassified as failed when
+  `Sandbox.wait()` returns `None`.
 - [ ] (2026-04-27T00:55:00Z) Scaffold and validate a single sandboxed worker
   path.
 - [ ] (2026-04-27T00:55:00Z) Add quota-bound async worker-pool state.
