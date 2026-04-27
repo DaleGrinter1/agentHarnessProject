@@ -26,6 +26,16 @@ resource limits before any expensive parallel or GPU work is exposed.
   Evidence: `skills/multi-agent-orchestrator/`,
   `skills/sandbox-agent-scaffolder/`, and `skills/agent-observability/`.
 
+- Observation: The first control-plane layer can be tested without Modal
+  credentials by injecting a fake command executor.
+  Evidence: `tests/test_agent_harness.py` validates Modal helper output parsing,
+  success, command failure, and timeout handling.
+
+- Observation: Operator-visible status does not need a UI framework yet.
+  Evidence: `scripts/agent_status.py` renders the latest JSONL worker records
+  as a terminal dashboard, and `--watch` can follow worker status from another
+  terminal.
+
 ## Decision Log
 
 - Decision: Treat this as a new initiative rather than extending the completed
@@ -46,6 +56,13 @@ resource limits before any expensive parallel or GPU work is exposed.
   risk if the harness cannot identify active workers and resource usage.
   Date/Author: 2026-04-27 / Codex
 
+- Decision: Start with a small typed Python contract rather than adopting the
+  full Agents SDK runtime in the first patch.
+  Rationale: The current repo has no product application yet, so a narrow
+  `WorkerTask` and `WorkerResult` surface gives later Agents SDK integration a
+  stable boundary while preserving the existing Modal runner.
+  Date/Author: 2026-04-27 / Codex
+
 ## Outcomes & Retrospective
 
 Not started. The first completed outcome should be a minimal, observable
@@ -64,6 +81,19 @@ The Modal blog notes retained in
 this initiative. The repo remains the system of record, so implementation
 choices must still follow `AGENTS.md`, `ARCHITECTURE.md`, `docs/RELIABILITY.md`,
 and `docs/SECURITY.md`.
+
+The first harness contract lives in `src/agent_harness/`. `WorkerTask` is the
+orchestrator-owned request: `task_id`, `objective`, `command`, `worker_name`,
+workspace paths, timeout, resource class, network setting, package additions,
+and non-secret environment values. `WorkerResult` is the machine-readable
+summary returned to the orchestrator: task id, worker name, status, command,
+return code, timestamps, duration, resource class, sandbox id, app name,
+workdir, stdout/stderr tails, summary, and error.
+
+Terminal worker statuses are `succeeded`, `failed`, `timed_out`, and
+`runner_error`. The orchestrator owns final user-facing synthesis. The Modal
+worker runner owns only the bounded sandbox execution request and concise
+result translation.
 
 ## Plan of Work
 
@@ -90,6 +120,11 @@ GPU resource classes.
 
    ```sh
    python -m py_compile scripts/modal_sandbox_demo.py
+   python -m unittest tests.test_agent_harness
+   python scripts/run_agent_worker.py \
+     --task-id smoke \
+     --objective "prove the worker path" \
+     --cmd "python -V"
    scripts/run_modal_sandbox.sh "python -V"
    ```
 
@@ -100,6 +135,7 @@ GPU resource classes.
 3. Add worker-pool state and quotas.
 
    ```sh
+   python scripts/agent_status.py
    ./scripts/validate-harness.sh
    ./scripts/execplan/check.sh
    ```
@@ -128,8 +164,12 @@ Document the JSON handoff files for this initiative:
 
 - [x] (2026-04-27T00:55:00Z) Captured the Modal blog learnings as a repo
   reference and opened this active initiative.
-- [ ] (2026-04-27T00:55:00Z) Define the minimal orchestrator and worker
+- [x] (2026-04-27T02:20:38Z) Define the minimal orchestrator and worker
   contract.
+- [x] (2026-04-27T02:20:38Z) Scaffold the single-worker Python path with
+  mocked runner validation.
+- [x] (2026-04-27T02:33:28Z) Add a dependency-free terminal status dashboard
+  backed by JSONL worker records.
 - [ ] (2026-04-27T00:55:00Z) Scaffold and validate a single sandboxed worker
   path.
 - [ ] (2026-04-27T00:55:00Z) Add quota-bound async worker-pool state.
@@ -155,4 +195,3 @@ For documentation and plan state changes, run `./scripts/execplan/check.sh` and
   large permanent orchestrator prompt.
 - Preserve the existing command-runner entrypoints while adding the higher-level
   harness.
-

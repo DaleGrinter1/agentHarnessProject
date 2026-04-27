@@ -112,7 +112,9 @@ Current harness validation:
 
 Current sandbox harness entrypoints:
 
+- `python scripts/agent_status.py`
 - `scripts/run_modal_sandbox.sh`
+- `python scripts/run_agent_worker.py --help`
 - `python scripts/modal_sandbox_demo.py --help`
 
 Before declaring product work complete in the future, define and document:

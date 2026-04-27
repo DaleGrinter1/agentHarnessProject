@@ -4,7 +4,7 @@
 # This prevents inconsistent diffs and merge issues between environments.
 
 # Default
-* text=auto
+* text eol=lf
 
 # Force LF (good for most code)
 *.js text eol=lf

@@ -10,6 +10,15 @@ There is also a convenience wrapper for the common "mount this repo into
 
 `scripts/run_modal_sandbox.sh`
 
+The first agent-harness layer wraps that same Modal execution path in a typed
+worker task/result contract:
+
+`scripts/run_agent_worker.py`
+
+Worker status can be displayed from the JSONL status log:
+
+`scripts/agent_status.py`
+
 ## First-Time Setup
 
 1. Activate the existing virtual environment:
@@ -42,6 +51,27 @@ Run a command with the repo mounted at `/workspace` using the wrapper:
 
 ```sh
 scripts/run_modal_sandbox.sh "ls -la"
+```
+
+Run one bounded worker task and print machine-readable JSON metadata:
+
+```sh
+python scripts/run_agent_worker.py \
+  --task-id smoke \
+  --objective "prove the worker path" \
+  --cmd "python -V"
+```
+
+Show the latest worker statuses:
+
+```sh
+python scripts/agent_status.py
+```
+
+Watch the status file while another terminal runs workers:
+
+```sh
+python scripts/agent_status.py --watch
 ```
 
 Upload the current repo into the sandbox and execute a command inside it:
@@ -83,3 +113,9 @@ scripts/run_modal_sandbox.sh \
   resource shape.
 - `--timeout` controls the sandbox lifetime in seconds. Modal documents a
   maximum of 24 hours for a single sandbox.
+- `scripts/run_agent_worker.py` currently supports the first single-worker
+  control-plane path. Use it when the caller wants structured status,
+  timestamps, sandbox id, return code, output tails, and a concise summary.
+- Worker runs append status records to `docs/generated/agent-workers.jsonl` by
+  default. Pass `--no-status-file` to skip persistence or `--status-file` to
+  write somewhere else.

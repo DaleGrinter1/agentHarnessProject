@@ -12,7 +12,7 @@
       "id": "orchestrator-worker-contract",
       "title": "Define orchestrator and worker contract",
       "description": "Specify worker input, output, status, run metadata, failure states, and ownership boundaries.",
-      "passes": false
+      "passes": true
     },
     {
       "id": "single-worker-smoke-path",

@@ -1,9 +1,9 @@
 {
   "initiative": "agent-harness-scaling",
   "plan": "PLAN_agent-harness-scaling.md",
-  "active_feature_id": "orchestrator-worker-contract",
+  "active_feature_id": "single-worker-smoke-path",
   "blockers": [],
-  "next_action": "Define the orchestrator/worker contract before changing runtime code.",
+  "next_action": "Run a live Modal smoke test for scripts/run_agent_worker.py while watching scripts/agent_status.py, then record the sandbox id and result metadata.",
   "handoff_rules": [
     "Read AGENTS.md, ARCHITECTURE.md, docs/references/modal-openai-agents-sdk-blog.md, and this plan before editing runtime files.",
     "Keep the harness control plane separate from sandbox execution.",
@@ -11,5 +11,5 @@
     "Keep worker outputs summarized and machine-readable where practical.",
     "Append meaningful checkpoints to progress.jsonl."
   ],
-  "updated_at": "2026-04-27T01:00:00Z"
+  "updated_at": "2026-04-27T02:33:28Z"
 }

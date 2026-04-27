@@ -20,6 +20,10 @@ __pycache__/
 .venv/
 .venv-modal/
 venv/
+tests/.tmp/
+
+# Runtime harness state
+docs/generated/agent-workers.jsonl
 
 # Node
 node_modules/
